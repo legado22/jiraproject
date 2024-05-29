@@ -18,9 +18,9 @@ jobs:
               uses: port-labs/ocean-sail@v1
               with:
                 type: jira
-                port_client_id: ${{ secrets.PORT_CLIENT_ID }}
-                port_client_secret: ${{ secrets.PORT_CLIENT_SECRET }}
+                port_client_id: "JhlbCJvsBHTAYEDbx1j60aE9DT5hEtPf"
+                port_client_secret: "Pdcrp4Swagz19ZFJ5ovSwhtyPoKXhsL87NGnVU0SCm3wkPL5HiiccHe5dpzleGuy"
                 config: |
-                    jiraHost: "ENTER VALUE HERE"
-                    atlassianUserEmail: ${{ secrets.atlassianUserEmail }}
-                    atlassianUserToken: ${{ secrets.atlassianUserToken }}
+                    jiraHost: "https://lesmarkoladipupo402.atlassian.net"
+                    atlassianUserEmail: "lesmarkoladipupo402.com"
+                    atlassianUserToken: "ATATT3xFfGF00fdhhY1eNmlybn9NR2YAXOHsvqWld_TuMv52eqYFSrprXTo3hS6svuWSbjuwNvXooxxsprfbQUeHlKqJrKtO6kviRu0J4DuiAlLTzCkcNjf2QwxczBPbq5ZMjCN20oeM78lV8nYlY4EiQSgk2OVGSE21cP4pwG-3aBHPTVFqvHc=3BCE0AF3"
