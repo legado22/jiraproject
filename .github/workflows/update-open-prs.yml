@@ -36,6 +36,3 @@ jobs:
                 "repo_name": "'"$REPO_NAME"'",
                 "open_pr_count": "'"${OPEN_PR_COUNT}"'"
               }'
-secrets:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Automatically provided by GitHub Actions
-  PORT_API_KEY: ${{ secrets.PORT_API_KEY }}  # Your Port API key, stored as a GitHub Secret
