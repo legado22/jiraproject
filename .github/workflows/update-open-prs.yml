@@ -1,0 +1,41 @@
+name: Update Open PRs in Port
+
+on:
+  schedule:
+    - cron: '0 * * * *' # Runs every hour
+  workflow_dispatch:
+
+jobs:
+  update-pr-count:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Fetch Open PR Count
+      id: pr-count
+      run: |
+        # Fetch the number of open PRs using GitHub API
+        OPEN_PR_COUNT=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          https://api.github.com/repos/${{ github.repository }}/pulls?state=open | jq '. | length')
+        echo "OPEN_PR_COUNT=${OPEN_PR_COUNT}" >> $GITHUB_ENV
+
+    - name: Update Port
+      run: |
+        # Replace the following with your actual Port API endpoint and required data
+        PORT_API_ENDPOINT="https://api.port.io/update-repo"
+        PORT_API_KEY="${{ secrets.PORT_API_KEY }}"
+        REPO_NAME="${{ github.repository }}"
+
+        # Update the Port entity with the number of open PRs
+        curl -X POST "$PORT_API_ENDPOINT" \
+          -H "Authorization: Bearer $PORT_API_KEY" \
+          -H "Content-Type: application/json" \
+          -d '{
+                "repo_name": "'"$REPO_NAME"'",
+                "open_pr_count": "'"${OPEN_PR_COUNT}"'"
+              }'
+secrets:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Automatically provided by GitHub Actions
+  PORT_API_KEY: ${{ secrets.PORT_API_KEY }}  # Your Port API key, stored as a GitHub Secret
