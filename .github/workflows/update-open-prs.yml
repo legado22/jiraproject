@@ -24,7 +24,7 @@ jobs:
     - name: Update Port
       run: |
         # Replace the following with your actual Port API endpoint and required data
-        PORT_API_ENDPOINT="https://api.port.io/update-repo"
+        PORT_API_ENDPOINT="https://app.getport.io/settings/data-model"
         PORT_API_KEY="${{ secrets.PORT_API_KEY }}"
         REPO_NAME="${{ github.repository }}"
 
